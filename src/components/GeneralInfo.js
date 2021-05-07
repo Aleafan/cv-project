@@ -4,21 +4,15 @@ class GeneralInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            edit: false,
             name: '',
+            profession: '',
+            address: '',
             phone: '',
             email: '',
             birth: '',
           };
-        this.handleClick = this.handleClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleClick() {
-        this.setState({
-            edit: true,
-        });
     }
 
     handleChange(e) {
@@ -29,44 +23,56 @@ class GeneralInfo extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.setState({
-            edit: false,
-        });
     }
 
     render() {
-        let {name, phone, email, birth} = this.state;
+        let {name, profession, address, phone, email, birth} = this.state;
 
-        if (this.state.edit) {
+        if (this.props.edit) {
             return (
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Full name:
-                        <input type='text' value={name} name='name' onChange={this.handleChange}/>
-                    </label>
-                    <label>
-                        Phone number:
-                        <input type='tel' value={phone} name='phone' onChange={this.handleChange}/>
-                    </label>
-                    <label>
-                        E-mail:
-                        <input type='email' value={email} name='email' onChange={this.handleChange}/>
-                    </label>
-                    <label>
-                        Date of birth:
-                        <input type='date' value={birth} name='birth' onChange={this.handleChange}/>
-                    </label>
-                    <button type='submit'>Submit</button>
-                </form>
-            );
+                <div className="section">
+                    <h2>General information</h2>
+                    <form onSubmit={this.handleSubmit}>
+                        <label>
+                            Full name:
+                            <input type='text' value={name} name='name' onChange={this.handleChange}/>
+                        </label>
+                        <label>
+                            Profession:
+                            <input type='text' value={profession} name='profession' onChange={this.handleChange}/>
+                        </label>
+                        <label>
+                            Address:
+                            <input type='text' value={address} name='address' onChange={this.handleChange}/>
+                        </label>
+                        <label>
+                            Phone number:
+                            <input type='tel' value={phone} name='phone' onChange={this.handleChange}/>
+                        </label>
+                        <label>
+                            E-mail:
+                            <input type='email' value={email} name='email' onChange={this.handleChange}/>
+                        </label>
+                        <label>
+                            Date of birth:
+                            <input type='date' value={birth} name='birth' onChange={this.handleChange}/>
+                        </label>
+                    </form>
+                </div>
+            );  
         }
         return (
-            <div>
-                <p>Full name: {name}</p>
-                <p>Phone number: {phone}</p>
-                <p>E-mail: {email}</p>
-                <p>Date of birth: {birth}</p>
-                <button type='button' onClick={this.handleClick}>Edit</button>
+            <div className="section">
+                <h1>{name || 'Your Name'}</h1>
+                <p id="profession">{profession}</p>
+                {address && 
+                    <p><strong>Address:</strong> {address}</p>}
+                {phone && 
+                    <p><strong>Phone number:</strong> {phone}</p>}
+                {email && 
+                    <p><strong>E-mail:</strong> {email}</p>}
+                {birth && 
+                    <p><strong>Date of birth:</strong> {birth}</p>}
             </div>
         );
     }

@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.section {
+    border-top: 1px solid;
+    margin-bottom: 1rem;
+}
+
+.section > h1 {
+    margin-bottom: 0;
+}
+
+input {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+input[type="date"] {
+    padding: 5px;
+}
+
+.btn-main {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #3a259d;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#profession {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+}
