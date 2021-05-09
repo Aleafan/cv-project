@@ -1,23 +1,18 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 class Education extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            edit: false,
             school: '',
+            faculty: '',
             title: '',
             dates: '',
           };
-        this.handleClick = this.handleClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleClick() {
-        this.setState({
-            edit: true,
-        });
     }
 
     handleChange(e) {
@@ -26,45 +21,54 @@ class Education extends Component {
         })
     }
 
-    handleSubmit(event) {
-        event.preventDefault();
-        this.setState({
-            edit: false,
-        });
+    handleSubmit(e) {
+        e.preventDefault();
     }
 
     render() {
-        let {school, title, dates} = this.state;
+        let {school, faculty, title, dates} = this.state;
 
-        if (this.state.edit) {
+        if (this.props.edit) {
             return (
-                <div className="section">
-                    <h2>Education</h2>
+                <div className='section'>
                     <form onSubmit={this.handleSubmit}>
                         <label>
-                            School name:
+                            School/university name:
                             <input type='text' value={school} name='school' onChange={this.handleChange}/>
                         </label>
                         <label>
-                            Title of study:
+                            Faculty/department:
+                            <input type='text' value={faculty} name='faculty' onChange={this.handleChange}/>
+                        </label>
+                        <label>
+                            Graduate as:
                             <input type='text' value={title} name='title' onChange={this.handleChange}/>
                         </label>
                         <label>
                             Dates of study:
-                            <input type='text' value={dates} name='dates' onChange={this.handleChange}/>
+                            <input type='text' value={dates} name='dates' onChange={this.handleChange}
+                                placeholder='yyyy-mm to yyyy-mm'/>
                         </label>
-                        <button type='submit'>Submit</button>
                     </form>
+
+                    <button className='btn-delete' type='button' onClick={this.props.delete} id={this.props.id}>
+                        <FontAwesomeIcon icon={faTrash} /> Delete entry
+                    </button>
+                    
                 </div>
             );
         }
         return (
-            <div className="section">
-                <h2>Education</h2>
-                <p>School/university name: {school}</p>
-                <p>Title of study: {title}</p>
-                <p>Dates of study: {dates}</p>
-                <button type='button' onClick={this.handleClick}>Edit section</button>
+            <div className='section'>
+                <div className='education-section'>
+                    <p className='dates'>{dates}</p>
+                    <div>
+                        <h3>{school}</h3>
+                        <p>{faculty}</p>
+                        {title &&
+                            <p><strong>Graduated as:</strong> <u>{title}</u></p>}
+                    </div>
+                </div>
             </div>
         );
     }

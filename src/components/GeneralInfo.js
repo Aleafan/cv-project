@@ -30,12 +30,12 @@ class GeneralInfo extends Component {
 
         if (this.props.edit) {
             return (
-                <div className="section">
+                <div>
                     <h2>General information</h2>
                     <form onSubmit={this.handleSubmit}>
                         <label>
                             Full name:
-                            <input type='text' value={name} name='name' onChange={this.handleChange}/>
+                            <input type='text' value={name} name='name' onChange={this.handleChange} autoFocus />
                         </label>
                         <label>
                             Profession:
@@ -62,7 +62,7 @@ class GeneralInfo extends Component {
             );  
         }
         return (
-            <div className="section">
+            <div>
                 <h1>{name || 'Your Name'}</h1>
                 <p id="profession">{profession}</p>
                 {address && 
