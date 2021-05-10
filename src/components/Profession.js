@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
-class Education extends Component {
+class Profession extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            school: '',
-            faculty: '',
-            title: '',
+            company: '',
+            position: '',
             dates: '',
+            responsibilities: '',
           };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,33 +26,33 @@ class Education extends Component {
     }
 
     render() {
-        let {school, faculty, title, dates} = this.state;
+        let {company, position, dates, responsibilities} = this.state;
 
         if (this.props.edit) {
             return (
                 <div className='section'>
                     <form onSubmit={this.handleSubmit}>
                         <label>
-                            School/university name:
-                            <input type='text' value={school} name='school' onChange={this.handleChange}/>
+                            Company:
+                            <input type='text' value={company} name='company' onChange={this.handleChange}/>
                         </label>
                         <label>
-                            Faculty/department:
-                            <input type='text' value={faculty} name='faculty' onChange={this.handleChange}/>
+                            Position:
+                            <input type='text' value={position} name='position' onChange={this.handleChange}/>
                         </label>
                         <label>
-                            Graduate as:
-                            <input type='text' value={title} name='title' onChange={this.handleChange}/>
-                        </label>
-                        <label>
-                            Dates of study:
+                            Dates of work:
                             <input type='text' value={dates} name='dates' onChange={this.handleChange}
                                 placeholder='yyyy-mm to yyyy-mm'/>
                         </label>
+                        <label>
+                            Responsibilities:
+                            <textarea rows='4' value={responsibilities} name='responsibilities' onChange={this.handleChange}/>
+                        </label>
                     </form>
 
-                    <button className='btn-delete' type='button' onClick={this.props.delete} id={this.props.id}
-                            data-section='educationIds'>
+                    <button className='btn-delete' type='button' onClick={this.props.delete} id={this.props.id} 
+                            data-section='professionIds'>
                         <FontAwesomeIcon icon={faTrash} /> Delete entry
                     </button>
                     
@@ -64,9 +64,13 @@ class Education extends Component {
                 <div className='flex-section'>
                     <p className='dates'>{dates}</p>
                     <div>
-                        <h3>{title}</h3>
-                        <p><u>{school}</u></p>
-                        <p>{faculty}</p>
+                        <h3>{position}</h3>
+                        <p><u>{company}</u></p>
+                        {responsibilities &&
+                            <div>
+                                <p>Responsibilities:</p>
+                                <p id='responsibilities'>{responsibilities}</p>
+                            </div>}
                     </div>
                 </div>
             </div>
@@ -74,4 +78,4 @@ class Education extends Component {
     }
 }
 
-export default Education
+export default Profession

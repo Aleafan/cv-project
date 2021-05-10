@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import uniqid from "uniqid";
 import GeneralInfo from "./components/GeneralInfo";
 import Education from "./components/Education";
+import Profession from "./components/Profession";
 import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
@@ -12,6 +13,7 @@ class App extends Component {
     this.state = {
       edit: true,
       educationIds: [uniqid()],
+      professionIds: [uniqid()],
     };
     this.handleEdit = this.handleEdit.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,18 +33,20 @@ class App extends Component {
     });
   }
 
-  handleAdd() {
+  handleAdd(e) {
+    let stateName = e.target.id;
     this.setState({
-      educationIds: this.state.educationIds.concat(uniqid()),
+      [stateName]: this.state[stateName].concat(uniqid()),
     })
   }
 
   handleDelete(e) {
-    let newEducationIds = [...this.state.educationIds];
-    let deleteIndex = newEducationIds.indexOf(e.target.id);
-    newEducationIds.splice(deleteIndex, 1);
+    let stateName = e.target.dataset.section;
+    let newIds = [...this.state[stateName]];
+    let deleteIndex = newIds.indexOf(e.target.id);
+    newIds.splice(deleteIndex, 1);
     this.setState({
-      educationIds: newEducationIds,
+      [stateName]: newIds,
     })
   }
 
@@ -67,8 +71,18 @@ class App extends Component {
         {this.state.educationIds.map(id => 
             <Education key={id} id={id} edit={this.state.edit} delete={this.handleDelete} />)}
         {this.state.edit &&
-            <button className='btn-add' type='button' onClick={this.handleAdd}>
+            <button id='educationIds' className='btn-add' type='button' onClick={this.handleAdd}>
 				<FontAwesomeIcon icon={faPlus} /> Add Education entry
+            </button>}
+
+        {this.state.edit || this.state.professionIds[0] 
+            ? <h2>Professional experience</h2>
+            : null }
+        {this.state.professionIds.map(id => 
+            <Profession key={id} id={id} edit={this.state.edit} delete={this.handleDelete} />)}
+        {this.state.edit &&
+            <button id='professionIds' className='btn-add' type='button' onClick={this.handleAdd}>
+				<FontAwesomeIcon icon={faPlus} /> Add Professional entry
             </button>}
 
         {button}

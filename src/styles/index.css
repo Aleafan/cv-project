@@ -6,7 +6,7 @@ body {
     max-width: 600px;
     margin: 0 auto;
 }
-input {
+input, textarea {
     display: block;
     width: 100%;
     margin-bottom: 0.5rem;
@@ -55,14 +55,15 @@ input[type="date"] {
 }
 
 /* Education component */
-.education-section {
+.flex-section {
     display: flex;
 }
-.education-section h3 {
+.flex-section h3 {
     margin: 0;
 }
 .dates {
     width: 150px;
+    flex-shrink: 0;
     margin: 0 1.5rem 0 0;
     line-height: 1.7;
     font-size: 0.8rem;
@@ -78,4 +79,9 @@ input[type="date"] {
 .btn-delete:hover {
     background-color: red;
     cursor: pointer;
+}
+
+/* Profession component */
+#responsibilities {
+    white-space: pre-line;
 }
