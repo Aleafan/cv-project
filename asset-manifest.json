@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/cv-project/static/css/main.bccf3069.chunk.css",
+    "main.css": "/cv-project/static/css/main.5544b31a.chunk.css",
     "main.js": "/cv-project/static/js/main.fb853990.chunk.js",
     "main.js.map": "/cv-project/static/js/main.fb853990.chunk.js.map",
     "runtime-main.js": "/cv-project/static/js/runtime-main.20ddf127.js",
@@ -8,14 +8,14 @@
     "static/js/2.bdb97c2f.chunk.js": "/cv-project/static/js/2.bdb97c2f.chunk.js",
     "static/js/2.bdb97c2f.chunk.js.map": "/cv-project/static/js/2.bdb97c2f.chunk.js.map",
     "index.html": "/cv-project/index.html",
-    "static/css/main.bccf3069.chunk.css.map": "/cv-project/static/css/main.bccf3069.chunk.css.map",
+    "static/css/main.5544b31a.chunk.css.map": "/cv-project/static/css/main.5544b31a.chunk.css.map",
     "static/js/2.bdb97c2f.chunk.js.LICENSE.txt": "/cv-project/static/js/2.bdb97c2f.chunk.js.LICENSE.txt",
     "static/media/index.css": "/cv-project/static/media/RobotoSlab-VariableFont_wght.27a558ea.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.20ddf127.js",
     "static/js/2.bdb97c2f.chunk.js",
-    "static/css/main.bccf3069.chunk.css",
+    "static/css/main.5544b31a.chunk.css",
     "static/js/main.fb853990.chunk.js"
   ]
 }
