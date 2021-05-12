@@ -1,0 +1,177 @@
+/* General rules */
+* {
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: 'Roboto Slab';
+    src: local('Roboto Slab'), url(./fonts/RobotoSlab-VariableFont_wght.ttf) format('truetype');
+}
+html {
+    font-family: 'Roboto Slab', serif;
+}
+body {
+    max-width: 800px;
+    margin: 0 auto;
+    background-image: url("./assets/geometry.png");  
+}
+#root {
+    background-color: whitesmoke;
+}
+main {
+    padding: 0 2rem;
+    flex-grow: 1;
+}
+@media (max-width: 570px) {
+    main {
+        padding: 0 0.5rem;
+    }
+}
+input, textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    font-family: 'Roboto Slab', serif;
+    font-size: 0.95rem;
+    padding: 0.2rem 0;
+}
+p {
+    margin: 0.3rem 0;
+}
+h2 {
+    border-bottom: 2px solid gray;
+    margin-bottom: 0.5rem;
+}
+
+/* App.js */
+#flex-parent {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+header {
+    text-align: center;
+    font-size: 1.4rem;
+    color: #3a259d;
+}
+@media (max-width: 420px) {
+    header {
+        font-size: 1.1rem;
+    }
+}
+header h1 {
+    margin: 0rem;
+    padding: 0.2rem;
+    box-shadow: 0 3px 3px;
+    border-radius: 5px;
+}
+header svg {
+    margin-right: 1rem;
+}
+.section {
+    margin-bottom: 0.5rem;
+    border-bottom: 3px dotted black;
+    padding-bottom: 0.5rem;
+}
+input[type="date"] {
+    padding: 5px;
+}
+.btn-main {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #3a259d;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 1.5rem 0;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: none;
+}
+.btn-main:hover {
+    background-color: #241664;
+    cursor: pointer;
+}
+.btn-add {
+    background-color: lightgreen;
+    margin: 0 auto;
+    padding: 0.3rem;
+    display: block;
+    border-radius: 5px;
+}
+.btn-add:hover {
+    cursor: pointer;
+    background-color: green;
+    color: white;
+}
+
+/* GeneralInfo component */
+#full-name {
+    font-size: 1.9rem;
+    border: none;
+    margin: 0.8rem 0 0;
+}
+#profession {
+    font-size: 1.3rem;
+    margin: 0 0 0.8rem;
+}
+
+/* Education component */
+.flex-section {
+    display: flex;
+}
+@media (max-width: 420px) {
+    .flex-section {
+        flex-direction: column;
+    }
+}
+.flex-section h3 {
+    margin: 0;
+}
+.dates {
+    width: 150px;
+    flex-shrink: 0;
+    margin: 0 1.5rem 0 0;
+    line-height: 1.7;
+    font-weight: bold;
+}
+@media (max-width: 420px) {
+    .dates {
+        width: 100%;
+        margin-right: 0;
+    }
+}
+.btn-delete {
+    color: white;
+    background-color: #c6070f;
+    display: block;
+    margin-left: auto;
+    border-radius: 5px;
+}
+.btn-delete:hover {
+    background-color: red;
+    cursor: pointer;
+}
+
+/* Profession component */
+#responsibilities {
+    white-space: pre-line;
+    margin-top: 0;
+    font-size: 0.95rem;
+}
+#responsibilities-header {
+    margin: 0.4rem 0 0.1rem;
+    font-style: italic;
+}
+
+/* Footer component */
+footer > p {
+    margin: 0;
+    padding: 0.1rem 0 0.1rem 2rem;
+    box-shadow: 0 -3px 2px grey;
+    background-color: whitesmoke;
+}
+@media (max-width: 420px) {
+    footer > p {
+        padding-left: 0.5rem;
+    }
+}

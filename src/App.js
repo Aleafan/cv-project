@@ -3,9 +3,10 @@ import uniqid from "uniqid";
 import GeneralInfo from "./components/GeneralInfo";
 import Education from "./components/Education";
 import Profession from "./components/Profession";
-import './App.css';
+import Footer from "./components/Footer";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faAddressCard } from '@fortawesome/free-solid-svg-icons'
 
 class App extends Component {
   constructor(props){
@@ -53,39 +54,46 @@ class App extends Component {
   render() {
     let button;
     if (this.state.edit) {
-      button = <button className='btn-main' type='button' onClick={this.handleSubmit}>Submit CV</button>
+      button = <button className='btn-main' type='button' onClick={this.handleSubmit}>BUILD CV</button>
     } else {
-      button = <button className='btn-main' type='button' onClick={this.handleEdit}>Edit CV</button>
+      button = <button className='btn-main' type='button' onClick={this.handleEdit}>EDIT CV</button>
     }
     
     return (
-      <div>
-        {/* CHANGE h1 TO NAV */}
-        <h1>CV Builder Application</h1>
+      <div id='flex-parent'>
+        <header>
+          <h1>
+            <FontAwesomeIcon icon={faAddressCard} />
+            CV Builder
+          </h1>
+        </header>
 
-        <GeneralInfo edit={this.state.edit} />
+        <main>
+          <GeneralInfo edit={this.state.edit} />
 
-        {this.state.edit || this.state.educationIds[0] 
-            ? <h2>Education</h2>
-            : null }
-        {this.state.educationIds.map(id => 
-            <Education key={id} id={id} edit={this.state.edit} delete={this.handleDelete} />)}
-        {this.state.edit &&
-            <button id='educationIds' className='btn-add' type='button' onClick={this.handleAdd}>
-				<FontAwesomeIcon icon={faPlus} /> Add Education entry
-            </button>}
+          {this.state.edit || this.state.educationIds[0] 
+              ? <h2>Education</h2>
+              : null }
+          {this.state.educationIds.map(id => 
+              <Education key={id} id={id} edit={this.state.edit} delete={this.handleDelete} />)}
+          {this.state.edit &&
+              <button id='educationIds' className='btn-add' type='button' onClick={this.handleAdd}>
+                <FontAwesomeIcon icon={faPlus} /> Add Education entry
+              </button>}
 
-        {this.state.edit || this.state.professionIds[0] 
-            ? <h2>Professional experience</h2>
-            : null }
-        {this.state.professionIds.map(id => 
-            <Profession key={id} id={id} edit={this.state.edit} delete={this.handleDelete} />)}
-        {this.state.edit &&
-            <button id='professionIds' className='btn-add' type='button' onClick={this.handleAdd}>
-				<FontAwesomeIcon icon={faPlus} /> Add Professional entry
-            </button>}
+          {this.state.edit || this.state.professionIds[0] 
+              ? <h2>Professional experience</h2>
+              : null }
+          {this.state.professionIds.map(id => 
+              <Profession key={id} id={id} edit={this.state.edit} delete={this.handleDelete} />)}
+          {this.state.edit &&
+              <button id='professionIds' className='btn-add' type='button' onClick={this.handleAdd}>
+                <FontAwesomeIcon icon={faPlus} /> Add Professional entry
+              </button>}
+          {button}
+        </main>
 
-        {button}
+        <Footer />
       </div>
     );
   };

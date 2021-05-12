@@ -68,7 +68,7 @@ class Profession extends Component {
                         <p><u>{company}</u></p>
                         {responsibilities &&
                             <div>
-                                <p>Responsibilities:</p>
+                                <p id='responsibilities-header'>Responsibilities:</p>
                                 <p id='responsibilities'>{responsibilities}</p>
                             </div>}
                     </div>

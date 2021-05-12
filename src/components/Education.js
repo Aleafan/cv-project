@@ -66,7 +66,7 @@ class Education extends Component {
                     <div>
                         <h3>{title}</h3>
                         <p><u>{school}</u></p>
-                        <p>{faculty}</p>
+                        <p><em>{faculty}</em></p>
                     </div>
                 </div>
             </div>

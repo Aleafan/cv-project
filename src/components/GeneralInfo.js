@@ -35,7 +35,7 @@ class GeneralInfo extends Component {
                     <form onSubmit={this.handleSubmit}>
                         <label>
                             Full name:
-                            <input type='text' value={name} name='name' onChange={this.handleChange} autoFocus />
+                            <input type='text' value={name} name='name' onChange={this.handleChange} />
                         </label>
                         <label>
                             Profession:
@@ -63,7 +63,7 @@ class GeneralInfo extends Component {
         }
         return (
             <div>
-                <h1>{name || 'Your Name'}</h1>
+                <h2 id='full-name'>{name || 'Your Name'}</h2>
                 <p id="profession">{profession}</p>
                 {address && 
                     <p><strong>Address:</strong> {address}</p>}
