@@ -27,34 +27,37 @@ class GeneralInfo extends Component {
 
     render() {
         let {name, profession, address, phone, email, birth} = this.state;
+        let lang = this.props.language;
 
         if (this.props.edit) {
             return (
                 <div>
-                    <h2>General information</h2>
+                    <h2>
+                        {lang === 'ru' ? 'Общая информация' : 'General information'}
+                    </h2>
                     <form onSubmit={this.handleSubmit}>
                         <label>
-                            Full name:
+                            {lang === 'ru' ? 'Полное имя:' : 'Full name:'}
                             <input type='text' value={name} name='name' onChange={this.handleChange} />
                         </label>
                         <label>
-                            Profession:
+                            {lang === 'ru' ? 'Профессия:' : 'Profession:'}
                             <input type='text' value={profession} name='profession' onChange={this.handleChange}/>
                         </label>
                         <label>
-                            Address:
+                            {lang === 'ru' ? 'Адрес:' : 'Address:'}
                             <input type='text' value={address} name='address' onChange={this.handleChange}/>
                         </label>
                         <label>
-                            Phone number:
+                            {lang === 'ru' ? 'Мобильный телефон:' : 'Phone number:'}
                             <input type='tel' value={phone} name='phone' onChange={this.handleChange}/>
                         </label>
                         <label>
-                            E-mail:
+                            {lang === 'ru' ? 'Электронная почта:' : 'E-mail:'}
                             <input type='email' value={email} name='email' onChange={this.handleChange}/>
                         </label>
                         <label>
-                            Date of birth:
+                            {lang === 'ru' ? 'Дата рождения:' : 'Date of birth:'}
                             <input type='date' value={birth} name='birth' onChange={this.handleChange}/>
                         </label>
                     </form>
@@ -63,16 +66,16 @@ class GeneralInfo extends Component {
         }
         return (
             <div>
-                <h2 id='full-name'>{name || 'Your Name'}</h2>
+                <h2 id='full-name'>{name || (lang === 'ru'? 'Ваше имя' : 'Your Name')}</h2>
                 <p id="profession">{profession}</p>
                 {address && 
-                    <p><strong>Address:</strong> {address}</p>}
+                    <p><strong>{lang === 'ru' ? 'Адрес:' : 'Address:'}</strong> {address}</p>}
                 {phone && 
-                    <p><strong>Phone number:</strong> {phone}</p>}
+                    <p><strong>{lang === 'ru' ? 'Моб. телефон:' : 'Phone number:'}</strong> {phone}</p>}
                 {email && 
-                    <p><strong>E-mail:</strong> {email}</p>}
+                    <p><strong>{lang === 'ru' ? 'Эл. почта:' : 'E-mail:'}</strong> {email}</p>}
                 {birth && 
-                    <p><strong>Date of birth:</strong> {birth}</p>}
+                    <p><strong>{lang === 'ru' ? 'Дата рождения:' : 'Date of birth:'}</strong> {birth}</p>}
             </div>
         );
     }

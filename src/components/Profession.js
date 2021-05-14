@@ -27,33 +27,36 @@ class Profession extends Component {
 
     render() {
         let {company, position, dates, responsibilities} = this.state;
+        let lang = this.props.language;
+        let placeholderDates = lang === 'ru'? 'мм-гггг по мм-гггг' : 'yyyy-mm to yyyy-mm';
 
         if (this.props.edit) {
             return (
                 <div className='section'>
                     <form onSubmit={this.handleSubmit}>
                         <label>
-                            Company:
+                            {lang === 'ru'? 'Компания:' : 'Company:'}
                             <input type='text' value={company} name='company' onChange={this.handleChange}/>
                         </label>
                         <label>
-                            Position:
+                            {lang === 'ru'? 'Должность:' : 'Position:'}
                             <input type='text' value={position} name='position' onChange={this.handleChange}/>
                         </label>
                         <label>
-                            Dates of work:
+                            {lang === 'ru'? 'Сроки работы:' : 'Dates of work:'}
                             <input type='text' value={dates} name='dates' onChange={this.handleChange}
-                                placeholder='yyyy-mm to yyyy-mm'/>
+                                placeholder={placeholderDates} />
                         </label>
                         <label>
-                            Responsibilities:
+                            {lang === 'ru'? 'Должностные обязанности:' : 'Responsibilities:'}
                             <textarea rows='4' value={responsibilities} name='responsibilities' onChange={this.handleChange}/>
                         </label>
                     </form>
 
                     <button className='btn-delete' type='button' onClick={this.props.delete} id={this.props.id} 
                             data-section='professionIds'>
-                        <FontAwesomeIcon icon={faTrash} /> Delete entry
+                        <FontAwesomeIcon icon={faTrash} /> 
+                        {lang === 'ru'? 'Удалить' : 'Delete entry'}
                     </button>
                     
                 </div>
@@ -68,7 +71,9 @@ class Profession extends Component {
                         <p><u>{company}</u></p>
                         {responsibilities &&
                             <div>
-                                <p id='responsibilities-header'>Responsibilities:</p>
+                                <p id='responsibilities-header'>
+                                    {lang === 'ru'? 'Должностные обязанности:' : 'Responsibilities:'}
+                                </p>
                                 <p id='responsibilities'>{responsibilities}</p>
                             </div>}
                     </div>

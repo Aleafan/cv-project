@@ -27,33 +27,36 @@ class Education extends Component {
 
     render() {
         let {school, faculty, title, dates} = this.state;
+        let lang = this.props.language;
+        let placeholderDates = lang === 'ru'? 'мм-гггг по мм-гггг' : 'yyyy-mm to yyyy-mm';
 
         if (this.props.edit) {
             return (
                 <div className='section'>
                     <form onSubmit={this.handleSubmit}>
                         <label>
-                            School/university name:
+                            {lang === 'ru'? 'Учебное учреждение:' : 'School/university name:'}
                             <input type='text' value={school} name='school' onChange={this.handleChange}/>
                         </label>
                         <label>
-                            Faculty/department:
+                            {lang === 'ru'? 'Факультет:' : 'Faculty/department:'}
                             <input type='text' value={faculty} name='faculty' onChange={this.handleChange}/>
                         </label>
                         <label>
-                            Graduate as:
+                            {lang === 'ru'? 'Специальность:' : 'Graduate as:'}
                             <input type='text' value={title} name='title' onChange={this.handleChange}/>
                         </label>
                         <label>
-                            Dates of study:
+                            {lang === 'ru'? 'Сроки обучения:' : 'Dates of study:'}
                             <input type='text' value={dates} name='dates' onChange={this.handleChange}
-                                placeholder='yyyy-mm to yyyy-mm'/>
+                                placeholder={placeholderDates}/>
                         </label>
                     </form>
 
                     <button className='btn-delete' type='button' onClick={this.props.delete} id={this.props.id}
                             data-section='educationIds'>
-                        <FontAwesomeIcon icon={faTrash} /> Delete entry
+                        <FontAwesomeIcon icon={faTrash} /> 
+                        {lang === 'ru'? 'Удалить' : 'Delete entry'}
                     </button>
                     
                 </div>
