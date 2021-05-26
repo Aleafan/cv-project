@@ -8,6 +8,9 @@ The app is a training project for The Odin Project course.
 ## Technologies
 Project is created with:
 * React v.17.0.2 (create-react-app)
+* JavaScript
+* HTML
+* CSS
 
 ## Demo
 https://aleafan.github.io/cv-project/
